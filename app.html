@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="author" content="作者名字">
+        <title></title>
+        <link href="app.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+         <script src="jquery-2.1.4.min.js"></script>
+    </head>
+    <body>
+        <header class="header">{{title}}</header>
+        <todo :placeholder='initholder' id="todoInput"></todo>
+        <div id="editBtn">
+            <editBtn @click="addList">{{addBtn}}</editBtn>
+            <editBtn @click="cancel">{{cancelBtn}}</editBtn>
+        </div>
+        <ul id="todolist">    
+            <itemList v-for="(list,index) in lists" :id="index" @click="edit">{{list}}</itemList>           
+        </ul>
+
+        <script>
+        // 1、标题组件
+        var header=new Vue({
+            el:"header",
+            data:{
+                title:"LBJ'S TODOLIST"
+            }
+        });
+
+        // 2、输入框组件
+        Vue.component("todo",{
+            template:"<textarea name='intodo'></textarea>"
+        });
+        var intodo=new Vue({
+            el:"todo",
+            data:{
+                initholder:"what are you going to do?"
+            }
+        });
+
+        // 3、按钮组件
+        var items=[];
+        var i=0;
+        Vue.component('editBtn',{
+            template:"<button></button>"
+        });
+         var btn=new Vue({
+            el:"#editBtn",
+            data:{
+                addBtn:"Add",
+                cancelBtn:"Cancel"
+            },
+            methods:{
+                addList:function(){
+                    var item=$("#todoInput").val();
+                    if(item==""){
+                        alert("please input your todo things!");
+                    }else{ 
+                        $("#todoInput").val("");
+                        items.push(item); 
+                    }
+                },
+                cancel:function(){
+                    $("#todoInput").val("");
+                }
+            }
+        });
+
+        // 4、待办事项列表组件
+        Vue.component('itemList',{
+            template:"<li></li>"
+        });
+        var list=new Vue({
+            el:"#todolist",
+            data:{
+                lists:items,
+                warn:"There is nothing to do!"
+            },
+            methods:{
+                edit:function(e){
+                    $(e.target).addClass("del");
+                    setTimeout(function(){
+                        if(confirm("Marked to be finished?")){
+                        var key=$(e.target).attr("id");
+                        items.splice(key,1);
+                        $(e.target).removeClass("del");
+                    }else{
+                        return;
+                    }
+                    },50);              
+                }
+            }
+        });
+        
+        </script>
+    </body>
+</html>

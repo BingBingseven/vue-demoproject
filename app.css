@@ -1,0 +1,62 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    margin:0;
+    padding:0;
+    color:#555555;
+    font-size: 18px;
+    text-decoration: none;
+    list-style: none;
+}
+.header{
+    width:100%;
+    height:50px;
+    background-color: #7e5982;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid #7e5982;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color:#fff;
+}
+#todoInput{
+    resize:none;
+    width: 100%;    
+    text-align: center;
+    line-height: 100px;
+    height: 100px;
+    border: 1px solid #7e5982;
+    border-radius: 5px;
+}
+#editBtn{
+    text-align: center;
+    color:#fff;
+}
+editBtn{
+    display: inline-block;
+    width: 43%;
+    height:30px;
+    line-height: 30px;
+    border: 1px solid #9c889d;
+    border-radius: 5px;
+    background-color: #9c889d;
+    margin:5px 1%;
+}
+#todolist{
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #7e5982;
+    border-radius: 5px;
+}
+itemList{
+    background-color: #d5c8d0;
+    padding:2px 10px;
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #d5c8d0;
+    border-radius: 5px;
+}
+.del{
+    background-color: #613860;
+    color :#fff;
+}
