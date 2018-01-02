@@ -55,6 +55,7 @@ itemList{
     margin-bottom: 10px;
     border: 1px solid #d5c8d0;
     border-radius: 5px;
+    word-wrap:break-word;
 }
 .del{
     background-color: #613860;
